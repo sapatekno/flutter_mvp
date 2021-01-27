@@ -1,6 +1,6 @@
-# flutter_mvp
+# Fluter MVP
 
-A Flutter project with MVP architecture.
+   A Flutter project with MVP architecture.
 
 ## Getting Started
 
