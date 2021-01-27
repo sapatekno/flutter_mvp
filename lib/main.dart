@@ -16,7 +16,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter MVP Basic Architecture',
       theme: ThemeData(
         primarySwatch: BaseTheme.colorPrimary,
         visualDensity: VisualDensity.adaptivePlatformDensity,
