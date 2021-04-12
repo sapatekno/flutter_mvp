@@ -50,15 +50,20 @@ class _LoginViewState extends BaseState<LoginView, LoginPresenter>
                 Row(
                   children: [
                     Expanded(
-                      child: FlatButton(
+                      child: TextButton(
+                        onPressed: () {},
                         child: Text("Reset"),
                       ),
                     ),
                     Expanded(
-                      child: FlatButton(
+                      child: TextButton(
                         child: Text("Login"),
-                        color: Colors.blue,
-                        onPressed: () {},
+                        style: TextButton.styleFrom(
+                            primary: Colors.white,
+                            backgroundColor: Colors.blue),
+                        onPressed: () {
+                          showSnackBar(message: "I am Clicked");
+                        },
                       ),
                     ),
                   ],

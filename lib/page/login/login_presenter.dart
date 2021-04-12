@@ -5,14 +5,6 @@ abstract class LoginContract extends BaseContract {
 }
 
 class LoginPresenter extends BasePresenter<LoginContract> {
-  String _coba = "";
-
-  String get coba => _coba;
-
-  set coba(String coba) {
-    _coba = coba;
-  }
-
   void getInfo() {
     print("this is getInfo");
   }

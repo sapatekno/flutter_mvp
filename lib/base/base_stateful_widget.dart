@@ -52,7 +52,7 @@ abstract class BaseState<StatefulWidget extends BaseStatefulWidget,
       ),
     );
 
-    keyScaffold.currentState.showSnackBar(snackBar);
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   @override
