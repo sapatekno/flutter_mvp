@@ -8,10 +8,10 @@ abstract class BaseState<StatefulWidget extends BaseStatefulWidget,
     implements BaseContract {
   bool isLoading = false;
 
-  GlobalKey<ScaffoldState> keyScaffold;
+  GlobalKey<ScaffoldState>? keyScaffold;
 
-  AppBar pageAppBar;
-  Widget pageBody;
+  AppBar? pageAppBar;
+  Widget? pageBody;
 
   void initMVP();
 
@@ -40,7 +40,7 @@ abstract class BaseState<StatefulWidget extends BaseStatefulWidget,
   }
 
   void showSnackBar({
-    @required String message,
+    required String message,
   }) {
     final snackBar = SnackBar(
       content: Text(message),

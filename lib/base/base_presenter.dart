@@ -6,7 +6,7 @@ abstract class BaseContract {
 
 abstract class BasePresenter<Contract extends BaseContract> {
   @protected
-  Contract view;
+  late Contract view;
 
   void setView(Contract view) {
     this.view = view;

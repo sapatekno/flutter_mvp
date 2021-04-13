@@ -1,4 +1,5 @@
 import 'package:flutter_mvp/base/base_presenter.dart';
+import 'package:flutter_mvp/data/model/ReqLogin.dart';
 
 abstract class LoginContract extends BaseContract {
   void setData();
@@ -13,4 +14,6 @@ class LoginPresenter extends BasePresenter<LoginContract> {
     print("task di click");
     view.showPageLoading(true);
   }
+
+  void doLogin(ReqLogin request) {}
 }
