@@ -5,30 +5,34 @@ import 'package:flutter_mvp/base/base_theme.dart';
 import 'package:flutter_mvp/page/login/login_view.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MainApp());
 }
 
-class MyApp extends StatefulWidget {
+class MainApp extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  _MainAppState createState() => _MainAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MainAppState extends State<MainApp> {
+  final _locales = [
+    Locale('en'), // * English
+    Locale('id'), // * Bahasa Indonesia
+  ];
+
+  final _localeDelegates = [
+    AppLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter MVP Basic Architecture',
-      localizationsDelegates: [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate
-      ],
-      locale: Locale('en'),
-      supportedLocales: [
-        Locale('en'),
-        Locale('id'),
-      ],
+      localizationsDelegates: _localeDelegates,
+      locale: _locales.first,
+      supportedLocales: _locales,
       theme: ThemeData(
         primarySwatch: BaseTheme.colorPrimary,
         visualDensity: VisualDensity.adaptivePlatformDensity,
