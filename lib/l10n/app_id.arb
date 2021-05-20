@@ -1,6 +1,19 @@
 {
-  "helloWorld": "Halo Dunia!",
-  "@helloWorld": {
-    "description": "The conventional newborn programmer greeting"
-  }
+  "accent_color": "Warna Aksen",
+  "blue": "Biru",
+  "dark": "Gelap",
+  "english": "Inggris",
+  "expense": "Pengeluaran",
+  "font": "Huruf",
+  "font_size": "Ukuran Huruf",
+  "income": "Pemasukan",
+  "indonesia": "Bahasa Indonesia",
+  "language": "Bahasa",
+  "light": "Terang",
+  "select_language": "Pilih Bahasa",
+  "select_theme": "Pilih Tema",
+  "setting": "Pengaturan",
+  "settings": "Pengaturan",
+  "system_default": "Bawaan Sistem",
+  "theme": "Tema"
 }

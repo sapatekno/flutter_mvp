@@ -5,6 +5,7 @@ abstract class BaseStatefulWidget extends StatefulWidget {}
 
 abstract class BaseState<StatefulWidget extends BaseStatefulWidget,
         Presenter extends BasePresenter> extends State<StatefulWidget>
+    with WidgetsBindingObserver
     implements BaseContract {
   bool isLoading = false;
 
@@ -18,7 +19,14 @@ abstract class BaseState<StatefulWidget extends BaseStatefulWidget,
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance!.addObserver(this);
     initMVP();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    WidgetsBinding.instance!.removeObserver(this);
   }
 
   @override
@@ -29,8 +37,7 @@ abstract class BaseState<StatefulWidget extends BaseStatefulWidget,
         appBar: pageAppBar,
         body: isLoading
             ? Container(
-                color: Colors.white,
-                child: Center(
+          child: Center(
                   child: CircularProgressIndicator(),
                 ),
               )

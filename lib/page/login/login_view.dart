@@ -84,7 +84,7 @@ class _LoginViewState extends BaseState<LoginView, LoginPresenter>
                         Expanded(
                           child: TextButton(
                             child:
-                                Text(AppLocalizations.of(context)!.helloWorld),
+                            Text(""),
                             style: TextButton.styleFrom(
                                 primary: Colors.white,
                                 backgroundColor: Colors.blue),

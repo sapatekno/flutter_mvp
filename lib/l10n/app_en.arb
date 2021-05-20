@@ -1,6 +1,19 @@
 {
-  "helloWorld": "Hello World!",
-  "@helloWorld": {
-    "description": "The conventional newborn programmer greeting"
-  }
+  "accent_color": "Accent Color",
+  "blue": "Blue",
+  "dark": "Dark",
+  "english": "English",
+  "expense": "Expense",
+  "font": "Font",
+  "font_size": "Font Size",
+  "income": "Income",
+  "indonesia": "Indonesian",
+  "language": "Language",
+  "light": "Light",
+  "select_language": "Select Language",
+  "select_theme": "Select Theme",
+  "setting": "Setting",
+  "settings": "Settings",
+  "system_default": "System Default",
+  "theme": "Theme"
 }
