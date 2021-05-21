@@ -22,34 +22,28 @@ class _ThemeViewState extends BaseState<ThemeView, ThemePresenter> implements Th
     _presenter = new ThemePresenter();
     _presenter.setView(this);
 
-    initView();
+    _initView();
   }
 
-  initView() {
+  _initView() {
     _presenter.getSetting();
   }
 
   @override
   Widget build(BuildContext context) {
-    pageAppBar = AppBar(title: Text(AppLocalizations
-        .of(context)
-        ?.select_theme ?? Alias.errorLanguage));
+    pageAppBar = AppBar(title: Text(AppLocalizations.of(context)?.select_theme ?? Alias.errorLanguage));
     pageBody = SettingsList(
       sections: [
         SettingsSection(tiles: [
           SettingsTile(
-            title: AppLocalizations
-                .of(context)
-                ?.light ?? Alias.errorLanguage,
+            title: AppLocalizations.of(context)?.light ?? Alias.errorLanguage,
             trailing: trailingWidget(0),
             onPressed: (BuildContext context) {
               changeTheme(index: 0, themeName: Alias.light);
             },
           ),
           SettingsTile(
-            title: AppLocalizations
-                .of(context)
-                ?.dark ?? Alias.errorLanguage,
+            title: AppLocalizations.of(context)?.dark ?? Alias.errorLanguage,
             trailing: trailingWidget(1),
             onPressed: (BuildContext context) {
               changeTheme(index: 1, themeName: Alias.dark);
@@ -73,7 +67,7 @@ class _ThemeViewState extends BaseState<ThemeView, ThemePresenter> implements Th
   }
 
   @override
-  setSetting({String? themeName}) {
+  setSetting({required String themeName}) {
     switch (themeName) {
       case Alias.light:
         MainApp.setTheme(context, Alias.light);

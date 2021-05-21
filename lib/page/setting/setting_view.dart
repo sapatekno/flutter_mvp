@@ -17,64 +17,51 @@ class SettingView extends BaseStatefulWidget {
 
 class _SettingViewState extends BaseState<SettingView, SettingPresenter> implements SettingContract {
   late SettingPresenter _presenter;
-  String _languageName = "";
+  String _languageName = Alias.emptyString;
+  String _themeName = Alias.emptyString;
 
   @override
   void initMVP() {
     _presenter = new SettingPresenter();
     _presenter.setView(this);
 
-    initView();
+    _initView();
   }
 
   @override
   Widget build(BuildContext context) {
-    pageAppBar = AppBar(title: Text(AppLocalizations
-        .of(context)
-        ?.settings ?? Alias.errorLanguage));
+    pageAppBar = AppBar(title: Text(AppLocalizations.of(context)?.settings ?? Alias.errorLanguage));
 
     pageBody = SettingsList(
       sections: [
         SettingsSection(
           tiles: [
             SettingsTile(
-              title: AppLocalizations
-                  .of(context)
-                  ?.language ?? Alias.errorLanguage,
+              title: AppLocalizations.of(context)?.language ?? Alias.errorLanguage,
               subtitle: _languageName,
               leading: Icon(Icons.language),
               onPressed: (BuildContext context) {
-                Navigator.pushNamed(context, LanguageView.routeName).then((value) => initView());
+                Navigator.pushNamed(context, LanguageView.routeName).then((value) => _initView());
               },
             ),
             SettingsTile(
-              title: AppLocalizations
-                  .of(context)
-                  ?.theme ?? Alias.errorLanguage,
-              subtitle: AppLocalizations
-                  .of(context)
-                  ?.light ?? Alias.errorLanguage,
+              title: AppLocalizations.of(context)?.theme ?? Alias.errorLanguage,
+              subtitle: _themeName,
               leading: Icon(Icons.brightness_4),
               onPressed: (BuildContext context) {
-                Navigator.pushNamed(context, ThemeView.routeName).then((value) => initView());
+                Navigator.pushNamed(context, ThemeView.routeName).then((value) => _initView());
               },
             ),
             SettingsTile(
-              title: AppLocalizations
-                  .of(context)
-                  ?.accent_color ?? Alias.errorLanguage,
-              subtitle: AppLocalizations
-                  .of(context)
-                  ?.blue ?? Alias.errorLanguage,
+              title: AppLocalizations.of(context)?.accent_color ?? Alias.errorLanguage,
+              subtitle: AppLocalizations.of(context)?.blue ?? Alias.errorLanguage,
               leading: Icon(Icons.circle, color: Colors.blue),
               onPressed: (BuildContext context) {
                 Navigator.pushNamed(context, LanguageView.routeName);
               },
             ),
             SettingsTile(
-              title: AppLocalizations
-                  .of(context)
-                  ?.font ?? Alias.errorLanguage,
+              title: AppLocalizations.of(context)?.font ?? Alias.errorLanguage,
               subtitle: 'Roboto',
               leading: Icon(Icons.font_download),
               onPressed: (BuildContext context) {
@@ -82,9 +69,7 @@ class _SettingViewState extends BaseState<SettingView, SettingPresenter> impleme
               },
             ),
             SettingsTile(
-              title: AppLocalizations
-                  .of(context)
-                  ?.font_size ?? Alias.errorLanguage,
+              title: AppLocalizations.of(context)?.font_size ?? Alias.errorLanguage,
               subtitle: 'Normal',
               leading: Icon(Icons.text_fields),
               onPressed: (BuildContext context) {
@@ -100,13 +85,19 @@ class _SettingViewState extends BaseState<SettingView, SettingPresenter> impleme
   }
 
   @override
-  setLanguageCode({String? languageCode}) {
+  setLanguageCode({required String languageCode}) {
     setState(() {
       _languageName = Fun.languageCodeToLanguageName(context: context, languageCode: languageCode);
     });
   }
 
-  initView() {
+  setThemeName({required String themeName}) {
+    setState(() {
+      _themeName = Fun.themeNameToThemeLangName(context: context, themeName: themeName);
+    });
+  }
+
+  _initView() {
     _presenter.getConfig();
   }
 }

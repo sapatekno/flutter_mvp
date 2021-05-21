@@ -1,4 +1,4 @@
-import 'package:floor/src/callback.dart';
+import 'package:floor/floor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mvp/base/base_stateful_widget.dart';
 import 'package:flutter_mvp/data/database/database.dart';

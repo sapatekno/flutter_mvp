@@ -22,43 +22,35 @@ class _LanguageViewState extends BaseState<LanguageView, LanguagePresenter> impl
     _presenter = new LanguagePresenter();
     _presenter.setView(this);
 
-    initView();
+    _initView();
   }
 
-  initView() {
+  _initView() {
     _presenter.getSetting();
   }
 
   @override
   Widget build(BuildContext context) {
-    pageAppBar = AppBar(title: Text(AppLocalizations
-        .of(context)
-        ?.select_language ?? Alias.errorLanguage));
+    pageAppBar = AppBar(title: Text(AppLocalizations.of(context)?.select_language ?? Alias.errorLanguage));
     pageBody = SettingsList(
       sections: [
         SettingsSection(tiles: [
           SettingsTile(
-            title: AppLocalizations
-                .of(context)
-                ?.system_default ?? Alias.errorLanguage,
+            title: AppLocalizations.of(context)?.system_default ?? Alias.errorLanguage,
             trailing: trailingWidget(0),
             onPressed: (BuildContext context) {
               changeLanguage(index: 0, languageCode: Alias.emptyString);
             },
           ),
           SettingsTile(
-            title: AppLocalizations
-                .of(context)
-                ?.english ?? Alias.errorLanguage,
+            title: AppLocalizations.of(context)?.english ?? Alias.errorLanguage,
             trailing: trailingWidget(1),
             onPressed: (BuildContext context) {
               changeLanguage(index: 1, languageCode: Alias.languageCodeEnglish);
             },
           ),
           SettingsTile(
-            title: AppLocalizations
-                .of(context)
-                ?.indonesia ?? Alias.errorLanguage,
+            title: AppLocalizations.of(context)?.indonesia ?? Alias.errorLanguage,
             trailing: trailingWidget(2),
             onPressed: (BuildContext context) {
               changeLanguage(index: 2, languageCode: Alias.languageCodeIndonesia);
@@ -83,23 +75,26 @@ class _LanguageViewState extends BaseState<LanguageView, LanguagePresenter> impl
   }
 
   @override
-  setSetting({String? languageCode}) {
+  setSetting({required String languageCode}) {
     setState(() {
-      if (languageCode != null) {
-        if (languageCode == 'en') {
+      Locale? _locale;
+
+      switch (languageCode) {
+        case Alias.languageCodeEnglish:
           _languageIndex = 1;
-          MainApp.setLocale(context, Locale(languageCode));
-        } else if (languageCode == 'id') {
+          _locale = Locale(languageCode);
+          break;
+        case Alias.languageCodeIndonesia:
           _languageIndex = 2;
-          MainApp.setLocale(context, Locale(languageCode));
-        } else {
+          _locale = Locale(languageCode);
+          break;
+        default:
           _languageIndex = 0;
-          MainApp.setLocale(context, null);
-        }
-      } else {
-        _languageIndex = 0;
-        MainApp.setLocale(context, null);
+          _locale = null;
+          break;
       }
+
+      MainApp.setLocale(context, _locale);
     });
   }
 

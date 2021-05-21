@@ -7,5 +7,5 @@ class Alias {
   static const languageCodeIndonesia = 'id';
   static const light = 'light';
   static const keySettingLanguageCode = 'setting_language_code';
-  static const keySettingTheme = 'setting_theme';
+  static const keySettingThemeName = 'setting_theme_name';
 }
