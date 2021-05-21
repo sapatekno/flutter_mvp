@@ -1,7 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mvp/base/alias.dart';
-import 'package:flutter_mvp/base/base_theme.dart';
 
 class Fun {
   static String languageCodeToLanguageName({required BuildContext context, required String languageCode}) {
@@ -39,21 +39,21 @@ class Fun {
     return _themeLangName;
   }
 
-  static ThemeData themeNameToThemeData({required String themeName}) {
-    ThemeData _themeData = BaseTheme.themeLight();
+  static Brightness themeNameToThemeMode({required String themeName}) {
+    Brightness _themeMode = Brightness.light;
 
     switch (themeName) {
       case Alias.light:
-        _themeData = BaseTheme.themeLight();
+        _themeMode = Brightness.light;
         break;
       case Alias.dark:
-        _themeData = BaseTheme.themeDark();
+        _themeMode = Brightness.dark;
         break;
       default:
-        _themeData = BaseTheme.themeLight();
+        _themeMode = Brightness.light;
         break;
     }
 
-    return _themeData;
+    return _themeMode;
   }
 }

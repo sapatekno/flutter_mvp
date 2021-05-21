@@ -1,11 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mvp/base/alias.dart';
-import 'package:flutter_mvp/base/base_theme.dart';
 import 'package:flutter_mvp/base/fun.dart';
 import 'package:flutter_mvp/page/category/category_view.dart';
 import 'package:flutter_mvp/page/init/Init_view.dart';
+import 'package:flutter_mvp/page/setting/accent_color/accent_color_view.dart';
 import 'package:flutter_mvp/page/setting/language/language_view.dart';
 import 'package:flutter_mvp/page/setting/setting_view.dart';
 import 'package:flutter_mvp/page/setting/theme/theme_view.dart';
@@ -19,19 +20,35 @@ class MainApp extends StatefulWidget {
   @override
   _MainAppState createState() => _MainAppState();
 
+  static MaterialColor getAccentColor(BuildContext context) {
+    _MainAppState _state = context.findAncestorStateOfType<_MainAppState>() as _MainAppState;
+    return _state._getAccentColor();
+  }
+
+  static void setAccentColor(BuildContext context, String colorName) {
+    _MainAppState _state = context.findAncestorStateOfType<_MainAppState>() as _MainAppState;
+    _state._setAccentColor(colorName);
+  }
+
   static void setLocale(BuildContext context, Locale? locale) {
     _MainAppState _state = context.findAncestorStateOfType<_MainAppState>() as _MainAppState;
-    _state.setLocale(locale);
+    _state._setLocale(locale);
   }
 
   static void setTheme(BuildContext context, String themeName) {
     _MainAppState _state = context.findAncestorStateOfType<_MainAppState>() as _MainAppState;
-    _state.setTheme(themeName);
+    _state._setTheme(themeName);
   }
 }
 
 class _MainAppState extends State<MainApp> {
-  ThemeData _themeData = BaseTheme.themeLight();
+  Brightness _themeMode = Brightness.light;
+
+  MaterialColor _primarySwatch = Colors.blue;
+  Color? _accentColor = Colors.blue[500];
+  Color? _toggleableActiveColor = Colors.blue[500];
+  Color? _selectionColor = Colors.blue[500];
+
   Locale? _locale;
 
   final _locales = [
@@ -47,6 +64,7 @@ class _MainAppState extends State<MainApp> {
   ];
 
   final _routes = {
+    AccentColorView.routeName: (context) => AccentColorView(),
     InitView.routeName: (context) => InitView(),
     CategoryView.routeName: (context) => CategoryView(),
     SettingView.routeName: (context) => SettingView(),
@@ -66,23 +84,67 @@ class _MainAppState extends State<MainApp> {
       initialRoute: InitView.routeName,
       locale: _locale,
       localizationsDelegates: _localeDelegates,
-      theme: _themeData,
+      theme: ThemeData(
+        brightness: _themeMode,
+        primarySwatch: _primarySwatch,
+        accentColor: _accentColor,
+        toggleableActiveColor: _toggleableActiveColor,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        textSelectionTheme: TextSelectionThemeData(
+          selectionColor: _selectionColor,
+        ),
+      ),
       title: Alias.appTitle,
       routes: _routes,
       supportedLocales: _locales,
     );
   }
 
-  setLocale(Locale? locale) {
+  _setLocale(Locale? locale) {
     setState(() {
       _locale = locale;
     });
   }
 
-  setTheme(String themeName) {
+  _setTheme(String themeName) {
     setState(() {
-      _themeData = Fun.themeNameToThemeData(themeName: themeName);
+      _themeMode = Fun.themeNameToThemeMode(themeName: themeName);
     });
+  }
+
+  _setAccentColor(String colorName) {
+    setState(() {
+      switch (colorName) {
+        case Alias.blue:
+          _primarySwatch = Colors.blue;
+          _accentColor = Colors.blue[500];
+          _toggleableActiveColor = Colors.blue[500];
+          _selectionColor = Colors.blue[500];
+          break;
+        case Alias.red:
+          _primarySwatch = Colors.red;
+          _accentColor = Colors.red[500];
+          _toggleableActiveColor = Colors.red[500];
+          _selectionColor = Colors.red[500];
+          break;
+        case Alias.teal:
+          _primarySwatch = Colors.teal;
+          _accentColor = Colors.teal[500];
+          _toggleableActiveColor = Colors.teal[500];
+          _selectionColor = Colors.teal[500];
+          break;
+        default:
+          _primarySwatch = Colors.blue;
+          _accentColor = Colors.blue[500];
+          _toggleableActiveColor = Colors.blue[500];
+          _selectionColor = Colors.blue[500];
+          break;
+      }
+    });
+  }
+
+  MaterialColor _getAccentColor() {
+    return _primarySwatch;
   }
 
   _initView() async {
@@ -98,6 +160,6 @@ class _MainAppState extends State<MainApp> {
 
     /// * Check Theme
     final String _themeName = _prefs.getString(Alias.keySettingThemeName) ?? Alias.emptyString;
-    _themeData = Fun.themeNameToThemeData(themeName: _themeName);
+    _themeMode = Fun.themeNameToThemeMode(themeName: _themeName);
   }
 }

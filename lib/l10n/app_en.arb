@@ -10,10 +10,13 @@
   "indonesia": "Indonesian",
   "language": "Language",
   "light": "Light",
+  "red": "Red",
+  "select_accent_color": "Select Accent Color",
   "select_language": "Select Language",
   "select_theme": "Select Theme",
   "setting": "Setting",
   "settings": "Settings",
   "system_default": "System Default",
+  "teal": "Teal",
   "theme": "Theme"
 }

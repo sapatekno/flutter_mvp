@@ -56,7 +56,7 @@ class _ThemeViewState extends BaseState<ThemeView, ThemePresenter> implements Th
   }
 
   Widget trailingWidget(int index) {
-    return (_themeIndex == index) ? Icon(Icons.check, color: Colors.blue) : Icon(null);
+    return (_themeIndex == index) ? Icon(Icons.check, color: MainApp.getAccentColor(context)) : Icon(null);
   }
 
   changeTheme({required int index, required String themeName}) {
@@ -68,20 +68,19 @@ class _ThemeViewState extends BaseState<ThemeView, ThemePresenter> implements Th
 
   @override
   setSetting({required String themeName}) {
-    switch (themeName) {
-      case Alias.light:
-        MainApp.setTheme(context, Alias.light);
-        _themeIndex = 0;
-        break;
-      case Alias.dark:
-        MainApp.setTheme(context, Alias.dark);
-        _themeIndex = 1;
-        break;
-      default:
-        MainApp.setTheme(context, Alias.light);
-        _themeIndex = 0;
-        break;
-    }
+    setState(() {
+      switch (themeName) {
+        case Alias.light:
+          _themeIndex = 0;
+          break;
+        case Alias.dark:
+          _themeIndex = 1;
+          break;
+        default:
+          _themeIndex = 0;
+          break;
+      }
+    });
   }
 
   @override

@@ -3,6 +3,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mvp/base/alias.dart';
 import 'package:flutter_mvp/base/base_stateful_widget.dart';
 import 'package:flutter_mvp/base/fun.dart';
+import 'package:flutter_mvp/main.dart';
+import 'package:flutter_mvp/page/setting/accent_color/accent_color_view.dart';
 import 'package:flutter_mvp/page/setting/language/language_view.dart';
 import 'package:flutter_mvp/page/setting/setting_presenter.dart';
 import 'package:flutter_mvp/page/setting/theme/theme_view.dart';
@@ -39,7 +41,10 @@ class _SettingViewState extends BaseState<SettingView, SettingPresenter> impleme
             SettingsTile(
               title: AppLocalizations.of(context)?.language ?? Alias.errorLanguage,
               subtitle: _languageName,
-              leading: Icon(Icons.language),
+              leading: Icon(
+                Icons.language,
+                color: MainApp.getAccentColor(context),
+              ),
               onPressed: (BuildContext context) {
                 Navigator.pushNamed(context, LanguageView.routeName).then((value) => _initView());
               },
@@ -47,7 +52,10 @@ class _SettingViewState extends BaseState<SettingView, SettingPresenter> impleme
             SettingsTile(
               title: AppLocalizations.of(context)?.theme ?? Alias.errorLanguage,
               subtitle: _themeName,
-              leading: Icon(Icons.brightness_4),
+              leading: Icon(
+                Icons.brightness_4,
+                color: MainApp.getAccentColor(context),
+              ),
               onPressed: (BuildContext context) {
                 Navigator.pushNamed(context, ThemeView.routeName).then((value) => _initView());
               },
@@ -55,15 +63,21 @@ class _SettingViewState extends BaseState<SettingView, SettingPresenter> impleme
             SettingsTile(
               title: AppLocalizations.of(context)?.accent_color ?? Alias.errorLanguage,
               subtitle: AppLocalizations.of(context)?.blue ?? Alias.errorLanguage,
-              leading: Icon(Icons.circle, color: Colors.blue),
+              leading: Icon(
+                Icons.circle,
+                color: MainApp.getAccentColor(context),
+              ),
               onPressed: (BuildContext context) {
-                Navigator.pushNamed(context, LanguageView.routeName);
+                Navigator.pushNamed(context, AccentColorView.routeName).then((value) => _initView());
               },
             ),
             SettingsTile(
               title: AppLocalizations.of(context)?.font ?? Alias.errorLanguage,
               subtitle: 'Roboto',
-              leading: Icon(Icons.font_download),
+              leading: Icon(
+                Icons.font_download,
+                color: MainApp.getAccentColor(context),
+              ),
               onPressed: (BuildContext context) {
                 Navigator.pushNamed(context, LanguageView.routeName);
               },
@@ -71,7 +85,10 @@ class _SettingViewState extends BaseState<SettingView, SettingPresenter> impleme
             SettingsTile(
               title: AppLocalizations.of(context)?.font_size ?? Alias.errorLanguage,
               subtitle: 'Normal',
-              leading: Icon(Icons.text_fields),
+              leading: Icon(
+                Icons.text_fields,
+                color: MainApp.getAccentColor(context),
+              ),
               onPressed: (BuildContext context) {
                 Navigator.pushNamed(context, LanguageView.routeName);
               },

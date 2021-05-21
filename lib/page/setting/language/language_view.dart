@@ -64,7 +64,7 @@ class _LanguageViewState extends BaseState<LanguageView, LanguagePresenter> impl
   }
 
   Widget trailingWidget(int index) {
-    return (_languageIndex == index) ? Icon(Icons.check, color: Colors.blue) : Icon(null);
+    return (_languageIndex == index) ? Icon(Icons.check, color: MainApp.getAccentColor(context)) : Icon(null);
   }
 
   changeLanguage({required int index, required String languageCode}) {
@@ -77,24 +77,17 @@ class _LanguageViewState extends BaseState<LanguageView, LanguagePresenter> impl
   @override
   setSetting({required String languageCode}) {
     setState(() {
-      Locale? _locale;
-
       switch (languageCode) {
         case Alias.languageCodeEnglish:
           _languageIndex = 1;
-          _locale = Locale(languageCode);
           break;
         case Alias.languageCodeIndonesia:
           _languageIndex = 2;
-          _locale = Locale(languageCode);
           break;
         default:
           _languageIndex = 0;
-          _locale = null;
           break;
       }
-
-      MainApp.setLocale(context, _locale);
     });
   }
 

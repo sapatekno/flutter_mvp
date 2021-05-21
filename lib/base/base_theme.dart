@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 final double _baseSpace = 4;
 
 class BaseTheme {
-  static MaterialColor colorPrimary = Colors.blue;
+  static MaterialColor colorPrimary = Colors.amber;
   static MaterialAccentColor colorSecondary = Colors.blueAccent;
 
   static double space(double value) {
@@ -22,7 +22,10 @@ class BaseTheme {
     return ThemeData(
       brightness: Brightness.dark,
       primarySwatch: BaseTheme.colorPrimary,
+      accentColor: Colors.orange[500],
+      toggleableActiveColor: Colors.orange[500],
       visualDensity: VisualDensity.adaptivePlatformDensity,
+      textSelectionTheme: TextSelectionThemeData(selectionColor: Colors.orange[200]),
     );
   }
 }
