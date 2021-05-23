@@ -19,6 +19,7 @@ class SettingView extends BaseStatefulWidget {
 
 class _SettingViewState extends BaseState<SettingView, SettingPresenter> implements SettingContract {
   late SettingPresenter _presenter;
+  String _accentColorName = Alias.emptyString;
   String _languageName = Alias.emptyString;
   String _themeName = Alias.emptyString;
 
@@ -62,7 +63,7 @@ class _SettingViewState extends BaseState<SettingView, SettingPresenter> impleme
             ),
             SettingsTile(
               title: AppLocalizations.of(context)?.accent_color ?? Alias.errorLanguage,
-              subtitle: AppLocalizations.of(context)?.blue ?? Alias.errorLanguage,
+              subtitle: _accentColorName,
               leading: Icon(
                 Icons.circle,
                 color: MainApp.getAccentColor(context),
@@ -116,5 +117,12 @@ class _SettingViewState extends BaseState<SettingView, SettingPresenter> impleme
 
   _initView() {
     _presenter.getConfig();
+  }
+
+  @override
+  setAccentColorName({required String accentColorName}) {
+    setState(() {
+      _accentColorName = Fun.accentColorNameToAccentColorLangName(context: context, accentColorName: accentColorName);
+    });
   }
 }

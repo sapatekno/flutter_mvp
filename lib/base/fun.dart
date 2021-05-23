@@ -56,4 +56,25 @@ class Fun {
 
     return _themeMode;
   }
+
+  static String accentColorNameToAccentColorLangName({required BuildContext context, required String accentColorName}) {
+    String _accentColorLangName = Alias.emptyString;
+
+    switch (accentColorName) {
+      case Alias.blue:
+        _accentColorLangName = AppLocalizations.of(context)?.blue ?? Alias.errorLanguage;
+        break;
+      case Alias.red:
+        _accentColorLangName = AppLocalizations.of(context)?.red ?? Alias.errorLanguage;
+        break;
+      case Alias.teal:
+        _accentColorLangName = AppLocalizations.of(context)?.teal ?? Alias.errorLanguage;
+        break;
+      default:
+        _accentColorLangName = AppLocalizations.of(context)?.blue ?? Alias.errorLanguage;
+        break;
+    }
+
+    return _accentColorLangName;
+  }
 }

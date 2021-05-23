@@ -6,6 +6,8 @@ abstract class SettingContract extends BaseContract {
   setLanguageCode({required String languageCode});
 
   setThemeName({required String themeName});
+
+  setAccentColorName({required String accentColorName});
 }
 
 class SettingPresenter extends BasePresenter<SettingContract> {
@@ -17,5 +19,9 @@ class SettingPresenter extends BasePresenter<SettingContract> {
 
     final String _themeName = _prefs.getString(Alias.keySettingThemeName) ?? Alias.emptyString;
     view.setThemeName(themeName: _themeName);
+
+    final String _accentColorName = _prefs.getString(Alias.keySettingAccentColorName) ?? Alias.emptyString;
+
+    view.setAccentColorName(accentColorName: _accentColorName);
   }
 }

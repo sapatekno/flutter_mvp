@@ -25,9 +25,9 @@ class MainApp extends StatefulWidget {
     return _state._getAccentColor();
   }
 
-  static void setAccentColor(BuildContext context, String colorName) {
+  static void setAccentColor(BuildContext context, String accentColorName) {
     _MainAppState _state = context.findAncestorStateOfType<_MainAppState>() as _MainAppState;
-    _state._setAccentColor(colorName);
+    _state._setAccentColor(accentColorName);
   }
 
   static void setLocale(BuildContext context, Locale? locale) {
@@ -112,9 +112,9 @@ class _MainAppState extends State<MainApp> {
     });
   }
 
-  _setAccentColor(String colorName) {
+  _setAccentColor(String accentColorName) {
     setState(() {
-      switch (colorName) {
+      switch (accentColorName) {
         case Alias.blue:
           _primarySwatch = Colors.blue;
           _accentColor = Colors.blue[500];
@@ -160,6 +160,13 @@ class _MainAppState extends State<MainApp> {
 
     /// * Check Theme
     final String _themeName = _prefs.getString(Alias.keySettingThemeName) ?? Alias.emptyString;
-    _themeMode = Fun.themeNameToThemeMode(themeName: _themeName);
+
+    /// * Check Accent Color
+    final String _accentColorName = _prefs.getString(Alias.keySettingAccentColorName) ?? Alias.emptyString;
+
+    /// * Set Settings at First Load
+    _setLocale(_locale);
+    _setTheme(_themeName);
+    _setAccentColor(_accentColorName);
   }
 }
