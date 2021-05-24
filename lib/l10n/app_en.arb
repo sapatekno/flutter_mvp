@@ -1,4 +1,6 @@
 {
+  "appearance": "Appearance",
+  "about_and_licenses": "About & Licenses",
   "accent_color": "Accent Color",
   "blue": "Blue",
   "dark": "Dark",
@@ -10,6 +12,7 @@
   "indonesia": "Indonesian",
   "language": "Language",
   "light": "Light",
+  "other": "Other",
   "red": "Red",
   "select_accent_color": "Select Accent Color",
   "select_language": "Select Language",

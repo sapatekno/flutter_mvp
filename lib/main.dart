@@ -10,6 +10,7 @@ import 'package:flutter_mvp/page/setting/accent_color/accent_color_view.dart';
 import 'package:flutter_mvp/page/setting/language/language_view.dart';
 import 'package:flutter_mvp/page/setting/setting_view.dart';
 import 'package:flutter_mvp/page/setting/theme/theme_view.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -81,15 +82,26 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: (BuildContext context, Widget? child) {
+        final MediaQueryData data = MediaQuery.of(context);
+        return MediaQuery(
+            data: data.copyWith(
+              textScaleFactor: data.textScaleFactor * MediaQuery.of(context).textScaleFactor,
+            ),
+            child: child as Widget);
+      },
       initialRoute: InitView.routeName,
       locale: _locale,
       localizationsDelegates: _localeDelegates,
       theme: ThemeData(
+        tabBarTheme: TabBarTheme(labelStyle: GoogleFonts.rubik()),
+        appBarTheme: AppBarTheme(textTheme: TextTheme(headline6: GoogleFonts.rubik())),
         brightness: _themeMode,
         primarySwatch: _primarySwatch,
         accentColor: _accentColor,
         toggleableActiveColor: _toggleableActiveColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        textTheme: GoogleFonts.rubikTextTheme(ThemeData(brightness: _themeMode, textTheme: TextTheme()).textTheme),
         textSelectionTheme: TextSelectionThemeData(
           selectionColor: _selectionColor,
         ),

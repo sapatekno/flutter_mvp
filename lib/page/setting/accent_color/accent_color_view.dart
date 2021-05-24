@@ -37,6 +37,10 @@ class _AccentColorViewState extends BaseState<AccentColorView, AccentColorPresen
         SettingsSection(tiles: [
           SettingsTile(
             title: AppLocalizations.of(context)?.blue ?? Alias.errorLanguage,
+            leading: Icon(
+              Icons.circle,
+              color: Colors.blue,
+            ),
             trailing: trailingWidget(0),
             onPressed: (BuildContext context) {
               changeTheme(index: 0, colorName: Alias.blue);
@@ -44,6 +48,10 @@ class _AccentColorViewState extends BaseState<AccentColorView, AccentColorPresen
           ),
           SettingsTile(
             title: AppLocalizations.of(context)?.red ?? Alias.errorLanguage,
+            leading: Icon(
+              Icons.circle,
+              color: Colors.red,
+            ),
             trailing: trailingWidget(1),
             onPressed: (BuildContext context) {
               changeTheme(index: 1, colorName: Alias.red);
@@ -51,6 +59,10 @@ class _AccentColorViewState extends BaseState<AccentColorView, AccentColorPresen
           ),
           SettingsTile(
             title: AppLocalizations.of(context)?.teal ?? Alias.errorLanguage,
+            leading: Icon(
+              Icons.circle,
+              color: Colors.teal,
+            ),
             trailing: trailingWidget(2),
             onPressed: (BuildContext context) {
               changeTheme(index: 2, colorName: Alias.teal);

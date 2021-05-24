@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mvp/base/alias.dart';
 import 'package:flutter_mvp/base/base_stateful_widget.dart';
+import 'package:flutter_mvp/base/base_theme.dart';
 import 'package:flutter_mvp/base/fun.dart';
 import 'package:flutter_mvp/main.dart';
 import 'package:flutter_mvp/page/setting/accent_color/accent_color_view.dart';
@@ -38,6 +39,8 @@ class _SettingViewState extends BaseState<SettingView, SettingPresenter> impleme
     pageBody = SettingsList(
       sections: [
         SettingsSection(
+          title: AppLocalizations.of(context)?.appearance ?? Alias.errorLanguage,
+          titlePadding: EdgeInsets.all(BaseTheme.space(4)),
           tiles: [
             SettingsTile(
               title: AppLocalizations.of(context)?.language ?? Alias.errorLanguage,
@@ -88,6 +91,23 @@ class _SettingViewState extends BaseState<SettingView, SettingPresenter> impleme
               subtitle: 'Normal',
               leading: Icon(
                 Icons.text_fields,
+                color: MainApp.getAccentColor(context),
+              ),
+              onPressed: (BuildContext context) {
+                Navigator.pushNamed(context, LanguageView.routeName);
+              },
+            ),
+          ],
+        ),
+        SettingsSection(
+          title: AppLocalizations.of(context)?.other ?? Alias.errorLanguage,
+          titlePadding: EdgeInsets.all(BaseTheme.space(4)),
+          tiles: [
+            SettingsTile(
+              title: AppLocalizations.of(context)?.about_and_licenses ?? Alias.errorLanguage,
+              subtitle: 'v1.0.0',
+              leading: Icon(
+                Icons.info,
                 color: MainApp.getAccentColor(context),
               ),
               onPressed: (BuildContext context) {

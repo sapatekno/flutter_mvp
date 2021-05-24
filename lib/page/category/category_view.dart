@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvp/base/base_stateful_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_mvp/base/base_stateful_widget.dart';
 import 'package:flutter_mvp/page/category/category_presenter.dart';
 import 'package:flutter_mvp/page/setting/setting_view.dart';
 
@@ -31,7 +31,7 @@ class _CategoryViewState extends BaseState<CategoryView, CategoryPresenter>
       initialIndex: 0,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('category'),
+          title: Text('Category'),
           actions: [
             IconButton(
               icon: Icon(Icons.settings),
@@ -50,7 +50,9 @@ class _CategoryViewState extends BaseState<CategoryView, CategoryPresenter>
         ),
         body: TabBarView(
           children: [
-            Container(),
+            Container(
+              child: Text("Hello Dunia"),
+            ),
             Icon(Icons.directions_transit),
           ],
         ),

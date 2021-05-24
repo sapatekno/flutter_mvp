@@ -1,4 +1,6 @@
 {
+  "appearance": "Penampilan",
+  "about_and_licenses": "Tentang & Lisensi",
   "accent_color": "Warna Aksen",
   "blue": "Biru",
   "dark": "Gelap",
@@ -10,6 +12,7 @@
   "indonesia": "Bahasa Indonesia",
   "language": "Bahasa",
   "light": "Terang",
+  "other": "Lainya",
   "red": "Merah",
   "select_accent_color": "Pilih Warna Aksen",
   "select_language": "Pilih Bahasa",
