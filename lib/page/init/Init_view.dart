@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mvp/base/base_stateful_widget.dart';
 import 'package:flutter_mvp/data/database/database.dart';
 import 'package:flutter_mvp/data/database/entity/category.dart';
-import 'package:flutter_mvp/page/category/category_view.dart';
+import 'package:flutter_mvp/page/home/home_view.dart';
 import 'package:flutter_mvp/page/init/init_presenter.dart';
 
 class InitView extends BaseStatefulWidget {
@@ -57,6 +57,6 @@ class _InitViewState extends BaseState<InitView, InitPresenter>
   }
 
   _openApp() {
-    Navigator.pushNamed(context, CategoryView.routeName);
+    Navigator.pushNamed(context, HomeView.routeName);
   }
 }

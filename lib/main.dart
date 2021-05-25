@@ -7,6 +7,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mvp/base/alias.dart';
 import 'package:flutter_mvp/base/fun.dart';
 import 'package:flutter_mvp/page/category/category_view.dart';
+import 'package:flutter_mvp/page/home/home_view.dart';
 import 'package:flutter_mvp/page/init/Init_view.dart';
 import 'package:flutter_mvp/page/setting/about_licenses/about_licenses_view.dart';
 import 'package:flutter_mvp/page/setting/accent_color/accent_color_view.dart';
@@ -101,6 +102,7 @@ class _MainAppState extends State<MainApp> {
     FontView.routeName: (context) => FontView(),
     FontSizeView.routeName: (context) => FontSizeView(),
     AboutlicensesView.routeName: (context) => AboutlicensesView(),
+    HomeView.routeName: (context) => HomeView(),
   };
 
   @override

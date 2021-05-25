@@ -16,6 +16,12 @@ class _CategoryViewState extends BaseState<CategoryView, CategoryPresenter> with
   late TabController _tabController;
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   void initMVP() {
     _presenter = new CategoryPresenter();
     _tabController = new TabController(length: 2, vsync: this);

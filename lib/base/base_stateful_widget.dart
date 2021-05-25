@@ -14,19 +14,17 @@ abstract class BaseState<StatefulWidget extends BaseStatefulWidget,
   AppBar? pageAppBar;
   Widget? pageBody;
 
-  void initMVP();
-
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance!.addObserver(this);
-    initMVP();
+    print("ini dari base");
   }
 
   @override
   void dispose() {
-    super.dispose();
     WidgetsBinding.instance!.removeObserver(this);
+    super.dispose();
   }
 
   @override
