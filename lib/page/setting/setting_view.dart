@@ -5,7 +5,10 @@ import 'package:flutter_mvp/base/base_stateful_widget.dart';
 import 'package:flutter_mvp/base/base_theme.dart';
 import 'package:flutter_mvp/base/fun.dart';
 import 'package:flutter_mvp/main.dart';
+import 'package:flutter_mvp/page/setting/about_licenses/about_licenses_view.dart';
 import 'package:flutter_mvp/page/setting/accent_color/accent_color_view.dart';
+import 'package:flutter_mvp/page/setting/font/font_view.dart';
+import 'package:flutter_mvp/page/setting/font_size/font_size_view.dart';
 import 'package:flutter_mvp/page/setting/language/language_view.dart';
 import 'package:flutter_mvp/page/setting/setting_presenter.dart';
 import 'package:flutter_mvp/page/setting/theme/theme_view.dart';
@@ -23,6 +26,9 @@ class _SettingViewState extends BaseState<SettingView, SettingPresenter> impleme
   String _accentColorName = Alias.emptyString;
   String _languageName = Alias.emptyString;
   String _themeName = Alias.emptyString;
+  String _fontName = Alias.emptyString;
+  String _fontSizeName = Alias.emptyString;
+  String _appVersion = Alias.emptyString;
 
   @override
   void initMVP() {
@@ -77,24 +83,24 @@ class _SettingViewState extends BaseState<SettingView, SettingPresenter> impleme
             ),
             SettingsTile(
               title: AppLocalizations.of(context)?.font ?? Alias.errorLanguage,
-              subtitle: 'Roboto',
+              subtitle: _fontName,
               leading: Icon(
                 Icons.font_download,
                 color: MainApp.getAccentColor(context),
               ),
               onPressed: (BuildContext context) {
-                Navigator.pushNamed(context, LanguageView.routeName);
+                Navigator.pushNamed(context, FontView.routeName).then((value) => _initView());
               },
             ),
             SettingsTile(
               title: AppLocalizations.of(context)?.font_size ?? Alias.errorLanguage,
-              subtitle: 'Normal',
+              subtitle: _fontSizeName,
               leading: Icon(
                 Icons.text_fields,
                 color: MainApp.getAccentColor(context),
               ),
               onPressed: (BuildContext context) {
-                Navigator.pushNamed(context, LanguageView.routeName);
+                Navigator.pushNamed(context, FontSizeView.routeName).then((value) => _initView());
               },
             ),
           ],
@@ -105,13 +111,13 @@ class _SettingViewState extends BaseState<SettingView, SettingPresenter> impleme
           tiles: [
             SettingsTile(
               title: AppLocalizations.of(context)?.about_and_licenses ?? Alias.errorLanguage,
-              subtitle: 'v1.0.0',
+              subtitle: 'v' + _appVersion,
               leading: Icon(
                 Icons.info,
                 color: MainApp.getAccentColor(context),
               ),
               onPressed: (BuildContext context) {
-                Navigator.pushNamed(context, LanguageView.routeName);
+                Navigator.pushNamed(context, AboutlicensesView.routeName).then((value) => _initView());
               },
             ),
           ],
@@ -143,6 +149,27 @@ class _SettingViewState extends BaseState<SettingView, SettingPresenter> impleme
   setAccentColorName({required String accentColorName}) {
     setState(() {
       _accentColorName = Fun.accentColorNameToAccentColorLangName(context: context, accentColorName: accentColorName);
+    });
+  }
+
+  @override
+  setFontName({required String fontName}) {
+    setState(() {
+      _fontName = Fun.fontNameToFontLangName(context: context, fontName: fontName);
+    });
+  }
+
+  @override
+  setFontSize({required String fontSize}) {
+    setState(() {
+      _fontSizeName = Fun.fontSizeToFontSizeName(context: context, fontSize: fontSize);
+    });
+  }
+
+  @override
+  setVersion({required String appVersion}) {
+    setState(() {
+      _appVersion = appVersion;
     });
   }
 }

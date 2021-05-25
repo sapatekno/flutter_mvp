@@ -11,9 +11,7 @@ class CategoryView extends BaseStatefulWidget {
   _CategoryViewState createState() => _CategoryViewState();
 }
 
-class _CategoryViewState extends BaseState<CategoryView, CategoryPresenter>
-    with SingleTickerProviderStateMixin
-    implements CategoryContract {
+class _CategoryViewState extends BaseState<CategoryView, CategoryPresenter> with SingleTickerProviderStateMixin implements CategoryContract {
   late CategoryPresenter _presenter;
   late TabController _tabController;
 

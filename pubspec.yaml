@@ -19,6 +19,7 @@ dependencies:
   google_fonts: ^2.1.0
   floor: ^1.1.0
   intl: ^0.17.0
+  package_info: ^2.0.0
   settings_ui: ^1.0.0
   shared_preferences: ^2.0.5
   sqflite: ^2.0.0+3
@@ -31,5 +32,7 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+  assets:
+    - google_fonts/
   generate: true
   uses-material-design: true
