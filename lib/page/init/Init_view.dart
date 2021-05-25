@@ -13,12 +13,13 @@ class InitView extends BaseStatefulWidget {
   _InitViewState createState() => _InitViewState();
 }
 
-class _InitViewState extends BaseState<InitView, InitPresenter>
-    implements InitContract {
+class _InitViewState extends BaseState<InitView, InitPresenter> implements InitContract {
   late InitPresenter _presenter;
 
   @override
-  void initMVP() {
+  void initState() {
+    super.initState();
+
     _presenter = new InitPresenter();
     _presenter.setView(this);
 
@@ -43,10 +44,7 @@ class _InitViewState extends BaseState<InitView, InitPresenter>
       },
     );
 
-    final database = await $FloorAppDatabase
-        .databaseBuilder(AppDatabase.dbName)
-        .addCallback(callback)
-        .build();
+    final database = await $FloorAppDatabase.databaseBuilder(AppDatabase.dbName).addCallback(callback).build();
 
     var category = Category(null, "Hola");
     await database.categoryDao.insertCategory(category);

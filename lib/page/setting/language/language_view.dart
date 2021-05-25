@@ -18,7 +18,8 @@ class _LanguageViewState extends BaseState<LanguageView, LanguagePresenter> impl
   int _languageIndex = 0;
 
   @override
-  void initMVP() {
+  void initState() {
+    super.initState();
     _presenter = new LanguagePresenter();
     _presenter.setView(this);
 

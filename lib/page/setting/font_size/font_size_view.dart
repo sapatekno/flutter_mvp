@@ -18,7 +18,8 @@ class _FontSizeViewState extends BaseState<FontSizeView, FontSizePresenter> impl
   int _fontSizeIndex = 0;
 
   @override
-  void initMVP() {
+  void initState() {
+    super.initState();
     _presenter = new FontSizePresenter();
     _presenter.setView(this);
 

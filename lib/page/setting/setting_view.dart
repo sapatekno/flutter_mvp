@@ -31,7 +31,8 @@ class _SettingViewState extends BaseState<SettingView, SettingPresenter> impleme
   String _appVersion = Alias.emptyString;
 
   @override
-  void initMVP() {
+  void initState() {
+    super.initState();
     _presenter = new SettingPresenter();
     _presenter.setView(this);
 

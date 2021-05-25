@@ -18,7 +18,8 @@ class _ThemeViewState extends BaseState<ThemeView, ThemePresenter> implements Th
   int _themeIndex = 0;
 
   @override
-  void initMVP() {
+  void initState() {
+    super.initState();
     _presenter = new ThemePresenter();
     _presenter.setView(this);
 

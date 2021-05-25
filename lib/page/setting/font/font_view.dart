@@ -19,7 +19,8 @@ class _FontViewState extends BaseState<FontView, FontPresenter> implements FontC
   int _fontIndex = 0;
 
   @override
-  void initMVP() {
+  void initState() {
+    super.initState();
     _presenter = new FontPresenter();
     _presenter.setView(this);
 

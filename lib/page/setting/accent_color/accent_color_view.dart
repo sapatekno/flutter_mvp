@@ -18,7 +18,8 @@ class _AccentColorViewState extends BaseState<AccentColorView, AccentColorPresen
   int _accentColorIndex = 0;
 
   @override
-  void initMVP() {
+  void initState() {
+    super.initState();
     _presenter = new AccentColorPresenter();
     _presenter.setView(this);
 

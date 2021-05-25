@@ -18,7 +18,9 @@ class _AboutlicensesViewState extends BaseState<AboutlicensesView, AboutLicenses
   String _appVersion = Alias.emptyString;
 
   @override
-  void initMVP() {
+  void initState() {
+    super.initState();
+
     _presenter = new AboutLicensesPresenter();
     _presenter.setView(this);
 

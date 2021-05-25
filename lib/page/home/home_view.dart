@@ -12,10 +12,11 @@ class _HomeViewState extends BaseState<HomeView, HomePresenter> implements HomeC
   late HomePresenter _presenter;
 
   @override
-  void initState() {
+  initState() {
     super.initState();
     _presenter = new HomePresenter();
     _presenter.setView(this);
-    print("ini dari home");
   }
+
+  b
 }
