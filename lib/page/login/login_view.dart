@@ -27,7 +27,5 @@ class _LoginViewState extends BaseState<LoginView, LoginPresenter> implements Lo
   }
 
   @override
-  void onViewCreated() {
-    presenter.call();
-  }
+  void onViewCreated() {}
 }
