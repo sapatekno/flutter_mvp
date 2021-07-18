@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvp/page/login/login_view.dart';
+import 'package:flutter_mvp/base/base_config.dart';
+import 'package:flutter_mvp/page/sample/sample_view.dart';
 
 void main() => runApp(MainApp());
 
@@ -8,11 +9,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-        title: 'Flutter MVP Basic Architecture',
+        title: BaseConfig.APP_NAME,
         theme: ThemeData(
-          primarySwatch: Colors.teal,
+          primarySwatch: Colors.indigo,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: LoginView(),
+        home: SampleView(),
       );
 }

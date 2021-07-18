@@ -14,6 +14,9 @@ abstract class BaseState<StatefulWidget extends BaseStatefulWidget, Presenter ex
       this.presenter.setContext(context);
       this.presenter.setView(view);
       onViewCreated();
+
+      /// TODO * This is Just Example, Feel Free To Remove
+      presenter.sampleBaseViewCallBasePresenter();
     });
   }
 
